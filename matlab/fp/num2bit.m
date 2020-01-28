@@ -1,13 +1,20 @@
 function b=num2bit(a)
-% s=bitstr(a)
+% s=num2bit(a)
 % return array of bits in variable a
 % in
 %   a  numeric scalar
 % out
-%   string of 0 1 characters one for each bit of a
-if ~isnumeric(a) | ~isscalar(a),
+%   b array one for each bit of a
+
+if ~isnumeric(a) | ~isscalar(a)
     error('input must be numeric scalar')
 end
+
+% % this should work but for some reason the result is wrong
+% p=whos('a');
+% b=int32(bitget(typecast(1,'uint64'),8*p.bytes:-1:1));
+% return
+
 h=num2hex(a);
 n=length(h);
 b=zeros(4,n);
